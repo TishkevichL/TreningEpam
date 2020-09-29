@@ -1,0 +1,161 @@
+public class Line{
+
+	public static void main(String[] args) {
+		
+		firstLines();
+		secondFormula();
+		thirdFormula();
+		fourthReverse();
+		timeFifth();
+		sixthCoordinates();
+	}
+	
+  //№1 Найдите  значение функции: z = ( (a – 3 ) * b / 2) + c. 
+  	static void firstLines() {
+		
+		int a, b, c;
+	
+		Scanner scanFirst = new Scanner(System.in);
+		
+		System.out.println("Введите а: ");
+		a = scanFirst.nextInt();
+		
+		System.out.println("Введите b: ");
+		b = scanFirst.nextInt();
+		
+		System.out.println("Введите c: ");
+		c = scanFirst.nextInt();
+		
+		double z;
+		z = ((a-3) * (b/2)) + c;
+		System.out.println(z);
+	}
+	
+//	№2  Вычислить значение выражения по формуле 
+//      (все переменные принимают действительные значения): 
+//      (𝑏 + √(𝑏2 + 4𝑎𝑐) / 2𝑎) − 𝑎^3 * 𝑐 + 𝑏^−2.
+
+	static void secondFormula() {
+		
+		double a, b, c;
+		
+		Scanner scanSecond = new Scanner(System.in);
+		
+		System.out.println("Введите а: ");
+		a = scanSecond.nextDouble();
+		
+		System.out.println("Введите b: ");
+		b = scanSecond.nextDouble();
+		
+		System.out.println("Введите c: ");
+		c = scanSecond.nextDouble();
+		
+		double eSqrt, res;
+		eSqrt = sqrt(pow(b, 2) + (4*a*c));
+
+		res = (b+eSqrt / 2*a) - (pow(a, 3)*c) + (1/pow(b, 2));
+		
+		if(a==0) {
+			System.out.println("Решение невозможно!");
+		}else {
+			System.out.println(res);
+		}
+	}
+  
+// №3	  Вычислить значение выражения по формуле 
+//      (все переменные принимают действительные значения): 
+//      (𝑠𝑖𝑛 𝑥 + 𝑐𝑜𝑠 𝑦 / 𝑐𝑜𝑠 𝑥 − 𝑠𝑖𝑛 𝑦) ∗ 𝑡𝑔 𝑥*𝑦 
+
+	static void thirdFormula() {
+		
+    // градусы 
+		double x, y;
+		
+		Scanner scanThird = new Scanner(System.in);
+		
+		System.out.println("Введите x: ");
+		x = scanThird.nextDouble();
+		
+		System.out.println("Введите y: ");
+		y = scanThird.nextDouble();
+		
+		double result = ((sin(x) + cos(y)) / (cos(x) - sin(y))) * tan(x * y);
+		
+		if(cos(x) - sin(y)==0) {
+			System.out.println("Решение невозможно!");
+		}else {
+			System.out.println(result);
+		}
+	}
+	
+//	№4  Дано действительное число R вида nnn.ddd (три цифровых разряда в дробной и целой частях).
+//      Поменять местами дробную и целую части числа и вывести полученное значение числа. 
+
+	static void fourthReverse() {
+		
+		double r = 123.456;
+		System.out.println("Начальное число: " + r);
+		
+		double rReverse = (r * 1000) % 1000 + (int) r/1000.0;
+		System.out.println("Конечное число: " + rReverse);
+	}
+	
+//	№5  Дано натуральное число Т, которое представляет длительность прошедшего времени в секундах. 
+//      Вывести данное значение длительности в часах, минутах и секундах в следующей форме: ННч ММмин SSc. 
+ 
+	static void timeFifth() {
+		
+		int time;
+		
+		Scanner scanFifth = new Scanner(System.in);
+		
+		System.out.println("Введите time: ");
+		time = scanFifth.nextInt();
+		
+		System.out.println("Длительность прошедшего времени в секундах: " + time);
+		 
+		if(time==0) return;
+		
+		int h = time/3600;
+		int m = (time - h * 3600) / 60;
+		int s = (h==0) ? time - m * 60:time - (h * 3600 + m * 60);
+		
+		String hh = Integer.toString(h);
+		if(hh.length() == 1) hh = "0" + hh;
+		
+		String mm = Integer.toString(m);
+		if(mm.length() == 1) mm = "0" + mm;
+		
+		String ss = Integer.toString(s);
+		if(ss.length() == 1) ss = "0" + ss;
+		
+		System.out.printf("%sh%sm%ss", hh, mm, ss);
+	}
+	
+//	№6    Для данной области составить линейную программу, которая печатает true, 
+//        если точка с координатами (х, у) принадлежит закрашенной области, и false — в противном случае.
+
+	static void sixthCoordinates() {
+		
+		int x, y;
+		Scanner scanIndex = new Scanner(System.in);
+		
+		System.out.println("Введите x: ");
+		x = scanIndex.nextInt();
+		
+		System.out.println("Введите y: ");
+		y = scanIndex.nextInt();
+		
+		boolean locatedInTheArea = locatedInTheArea(x, y);
+		
+		System.out.println(x + "," + y + "," + locatedInTheArea);
+	}
+	
+	static boolean locatedInTheArea(int x, int y) {
+		 
+		boolean locatedInTheArea = ((x >= -4 && x <= 4) && (y >=-3 && y <=0)) 
+									|| ((x >= -2 && x <= 2) && (y >=0 && y <=4));
+			
+		return locatedInTheArea;
+	}
+}  
