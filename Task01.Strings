@@ -32,7 +32,8 @@ public class SnakeCase {
 				}else {
 					
 					strBuff.append("_");
-					strBuff.append(Character.toLowerCase(nextSymb));
+					nextSymb = Character.toLowerCase(nextSymb);
+					strBuff.append(nextSymb);
 				}
 			}
 			snakeCase[i] = strBuff.toString();
