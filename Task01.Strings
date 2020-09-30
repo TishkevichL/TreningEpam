@@ -23,16 +23,16 @@ public class SnakeCase {
 			
 			for(int k = 0; k<camelCase[i].length(); k++) {
 				
-				char nextSumb = camelCase[i].toCharArray()[k];
+				char nextSymb = camelCase[i].toCharArray()[k];
 				
-				if(Character.isLowerCase(nextSumb)) {
+				if(Character.isLowerCase(nextSymb)) {
 					
-					strBuff.append(nextSumb);
+					strBuff.append(nextSymb);
 					
 				}else {
 					
 					strBuff.append("_");
-					strBuff.append(Character.toLowerCase(nextSumb));
+					strBuff.append(Character.toLowerCase(nextSymb));
 				}
 			}
 			snakeCase[i] = strBuff.toString();
