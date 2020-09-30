@@ -1,0 +1,361 @@
+import static java.lang.Math.*;
+import java.util.Scanner;
+
+public class Line{
+
+	public static void main(String[] args) {
+		
+		firstLines();
+		secondFormula();
+		thirdFormula();
+		fourthReverse();
+		timeFifth();
+		sixthCoordinates();
+		
+		firstTriangle();
+		secondMax();
+		fourthBrick();
+		fifthFunctionValue();
+		
+		summNumbers();
+		summSquares();
+		prodSquar();
+		deliteli();
+		
+	}
+	
+  //№1.1 Найдите  значение функции: z = ( (a – 3 ) * b / 2) + c. 
+  	static void firstLines() {
+		
+		int a, b, c;
+	
+		Scanner scanFirst = new Scanner(System.in);
+		
+		System.out.println("Введите а: ");
+		a = scanFirst.nextInt();
+		
+		System.out.println("Введите b: ");
+		b = scanFirst.nextInt();
+		
+		System.out.println("Введите c: ");
+		c = scanFirst.nextInt();
+		
+		double z;
+		z = ((a-3) * (b/2)) + c;
+		System.out.println(z);
+	}
+	
+//	№1.2  Вычислить значение выражения по формуле 
+//      (все переменные принимают действительные значения): 
+//      (𝑏 + √(𝑏2 + 4𝑎𝑐) / 2𝑎) − 𝑎^3 * 𝑐 + 𝑏^−2.
+
+	static void secondFormula() {
+		
+		double a, b, c;
+		
+		Scanner scanSecond = new Scanner(System.in);
+		
+		System.out.println("Введите а: ");
+		a = scanSecond.nextDouble();
+		
+		System.out.println("Введите b: ");
+		b = scanSecond.nextDouble();
+		
+		System.out.println("Введите c: ");
+		c = scanSecond.nextDouble();
+		
+		double eSqrt, res;
+		eSqrt = sqrt(pow(b, 2) + (4*a*c));
+
+		res = (b+eSqrt / 2*a) - (pow(a, 3)*c) + (1/pow(b, 2));
+		
+		if(a==0) {
+			System.out.println("Решение невозможно!");
+		}else {
+			System.out.println(res);
+		}
+	}
+  
+// №1.3	  Вычислить значение выражения по формуле 
+//      (все переменные принимают действительные значения): 
+//      (𝑠𝑖𝑛 𝑥 + 𝑐𝑜𝑠 𝑦 / 𝑐𝑜𝑠 𝑥 − 𝑠𝑖𝑛 𝑦) ∗ 𝑡𝑔 𝑥*𝑦 
+
+	static void thirdFormula() {
+		
+    // градусы 
+		double x, y;
+		
+		Scanner scanThird = new Scanner(System.in);
+		
+		System.out.println("Введите x: ");
+		x = scanThird.nextDouble();
+		
+		System.out.println("Введите y: ");
+		y = scanThird.nextDouble();
+		
+		double result = ((sin(x) + cos(y)) / (cos(x) - sin(y))) * tan(x * y);
+		
+		if(cos(x) - sin(y)==0) {
+			System.out.println("Решение невозможно!");
+		}else {
+			System.out.println(result);
+		}
+	}
+	
+//	№1.4  Дано действительное число R вида nnn.ddd (три цифровых разряда в дробной и целой частях).
+//      Поменять местами дробную и целую части числа и вывести полученное значение числа. 
+
+	static void fourthReverse() {
+		
+		double r = 123.456;
+		System.out.println("Начальное число: " + r);
+		
+		double rReverse = (r * 1000) % 1000 + (int) r/1000.0;
+		System.out.println("Конечное число: " + rReverse);
+	}
+	
+//	№1.5  Дано натуральное число Т, которое представляет длительность прошедшего времени в секундах. 
+//      Вывести данное значение длительности в часах, минутах и секундах в следующей форме: ННч ММмин SSc. 
+ 
+	static void timeFifth() {
+		
+		int time;
+		
+		Scanner scanFifth = new Scanner(System.in);
+		
+		System.out.println("Введите time: ");
+		time = scanFifth.nextInt();
+		
+		System.out.println("Длительность прошедшего времени в секундах: " + time);
+		 
+		if(time==0) return;
+		
+		int h = time/3600;
+		int m = (time - h * 3600) / 60;
+		int s = (h==0) ? time - m * 60:time - (h * 3600 + m * 60);
+		
+		String hh = Integer.toString(h);
+		if(hh.length() == 1) hh = "0" + hh;
+		
+		String mm = Integer.toString(m);
+		if(mm.length() == 1) mm = "0" + mm;
+		
+		String ss = Integer.toString(s);
+		if(ss.length() == 1) ss = "0" + ss;
+		
+		System.out.printf("%sh%sm%ss", hh, mm, ss);
+	}
+	
+//	№1.6    Для данной области составить линейную программу, которая печатает true, 
+//        если точка с координатами (х, у) принадлежит закрашенной области, и false — в противном случае.
+
+	static void sixthCoordinates() {
+		
+		int x, y;
+		Scanner scanIndex = new Scanner(System.in);
+		
+		System.out.println("Введите x: ");
+		x = scanIndex.nextInt();
+		
+		System.out.println("Введите y: ");
+		y = scanIndex.nextInt();
+		
+		boolean locatedInTheArea = locatedInTheArea(x, y);
+		
+		System.out.println(x + "," + y + "," + locatedInTheArea);
+	}
+	
+	static boolean locatedInTheArea(int x, int y) {
+		 
+		boolean locatedInTheArea = ((x >= -4 && x <= 4) && (y >=-3 && y <=0)) 
+						|| ((x >= -2 && x <= 2) && (y >=0 && y <=4));
+			
+		return locatedInTheArea;
+	}
+// 2.1	 Даны два угла треугольника (в градусах). 
+//	 Определить, существует ли такой треугольник, и если да, то будет ли он прямоугольным. 
+ 
+	static void firstTriangle() {
+		
+		int a, b;
+		Scanner scanAngle = new Scanner(System.in);
+		
+		System.out.println("Введите градус угла а: ");
+		a = scanAngle.nextInt();
+		
+		System.out.println("Введите градусугла b: ");
+		b = scanAngle.nextInt();
+		
+		boolean existTriangle = existTriangle(a, b);
+		boolean rectangularTriangle = rectangularTriangle(a, b);
+		
+		System.out.println("Треугольник существует: "+ existTriangle);
+		System.out.println("Треугольник прямоугольный: "+ rectangularTriangle);
+	}
+	
+//	Cуществование треугольника
+	static boolean existTriangle(int a, int b) {
+		boolean anglesExist = a>0 && b>0;
+		boolean existTriangle = (a + b > 0 && a + b < 180 && anglesExist);
+		return existTriangle;
+	}
+	
+//	Треугольник прямоугольный
+	static boolean rectangularTriangle(int a, int b) {
+		int c = 180 - (a + b);
+		
+		boolean rectangularTriangle = (a==90 || b==90 || c==90 );
+		
+		return rectangularTriangle;
+	}
+	
+//	№2.2	Найти max{min(a, b), min(c, d)}. 
+
+	static void secondMax() {
+		
+		int a, b, c, d;
+		
+		Scanner scanNum = new Scanner(System.in);
+
+		System.out.println("Введите а: ");
+		a = scanNum.nextInt();
+		
+		System.out.println("Введите b: ");
+		b = scanNum.nextInt();
+		
+		System.out.println("Введите c: ");
+		c = scanNum.nextInt();
+		
+		System.out.println("Введите d: ");
+		d = scanNum.nextInt();
+		
+		int max = Math.max(Math.min(a, b), Math.min(c, d));
+		
+		System.out.println("Max: "+ max);
+	}
+	
+//	№2.4	 Заданы размеры А, В прямоугольного отверстия и размеры х, у, z кирпича.
+//		 Определить, пройдет ли кирпич через отверстие. 
+
+	static void fourthBrick() {
+		
+		int A, B;
+				
+		Scanner scanSize = new Scanner(System.in);
+		
+		System.out.println("Введите A: ");
+		A = scanSize.nextInt();
+		
+		System.out.println("Введите B: ");
+		B = scanSize.nextInt();
+		
+		int x, y, z;
+		
+		System.out.println("Введите x: ");
+		x = scanSize.nextInt();
+		
+		System.out.println("Введите y: ");
+		y = scanSize.nextInt();
+		
+		System.out.println("Введите z: ");
+		z = scanSize.nextInt();
+		
+		boolean res = (x<=A && y<=B) || (x<=B && y<=A) || (z<=A && x<=B) || (z<=B && x<=A);
+		System.out.println(res);
+	}
+	
+//	№2.5	 Вычислить значение функции:
+//		F(x) = x^2 - 3x + 9, если x<=3;
+//		F(x) = 1 / x^3 + 6, если x>3;
+
+	static void fifthFunctionValue() {
+		
+		double x;
+		
+		Scanner scanVal = new Scanner(System.in);
+		
+		System.out.println("Введите x: ");
+		x = scanVal.nextDouble();
+		
+		double F = x <= 3 ? (pow(x, 2) - 3*x + 9) : (1/(pow(x, 3)+6)); 
+		
+		System.out.println(F);
+	}
+	
+//	№3.1	Напишите программу, где пользователь вводит любое целое положительное число.
+//		А программа суммирует все числа от 1 до введенного пользователем числа. 
+ 
+	static void summNumbers() {
+		
+		int numb;
+		Scanner scanNumb = new Scanner(System.in);
+		
+		System.out.println("Введите любое целое положительное число: ");
+		numb = scanNumb.nextInt();
+		
+		int summNumb = 0;
+		
+		for(int i=1; i<numb; i++) {
+			summNumb += i;
+		}
+		System.out.println("Сумма чисел от 1 до " + numb + "=" + summNumb);
+	}
+	
+//	№3.3	 Найти сумму квадратов первых ста чисел. 
+	static void summSquares() {
+		
+		int summ = 0;
+	
+		for(int i = 1; i<=100; i++) {
+		summ += i*i;
+		}
+		
+		System.out.println("summ: " + summ);
+	}
+	
+//	№3.4	Составить программу нахождения произведения квадратов первых двухсот чисел. 
+	static void prodSquar() {
+		
+		double resProd = 1;
+	     	int count = 0;
+	     	double number = -5.0;
+
+	     while (count <= 200) {
+	    	 resProd *= number * number;
+	         number += 0.01;
+	         count++;
+	     }
+	     
+	     System.out.println("Произведение квадратов первых двухсот чисел равно " + resProd);
+	}
+	
+	
+//	№3.7	 Для каждого натурального числа в промежутке от m до n вывести все делители,
+//		 кроме единицы и самого числа. m и n вводятся с клавиатуры. 
+ 
+	static void deliteli() {
+		
+		int m, n;
+		
+		Scanner scanNum = new Scanner(System.in);
+		
+		System.out.println("Введите m: ");
+		m = scanNum.nextInt();
+		
+		System.out.println("Введите n: ");
+		n = scanNum.nextInt();
+		
+		for(int i = m; i<=n; i++) {
+			System.out.print("Число: "+ i);
+			
+			for(int k = 2; k<i; k++) {
+				
+				if(i%k == 0) 				
+				System.out.print(", Делители: "+ k);
+				
+			}
+			System.out.println();
+		}
+	
+	}
+}  
