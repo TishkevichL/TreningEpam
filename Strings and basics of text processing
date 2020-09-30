@@ -1,0 +1,92 @@
+public class StringsMain {
+	
+	private static String text = "Sorry seems to be the hardest word.";
+	private static String text2 = "Children  have  classes    till  3  15  p.m.   At  12  ";
+	
+	public static void main(String[] args) {
+		
+		task02();
+		task03();
+		task04();
+		task05();
+	}
+  
+//   Замените в строке все вхождения 'word' на 'letter'. 
+
+	private static void task02() {
+		
+		String textReplace = text.replace("word", "letter");
+		System.out.println(text);
+		System.out.println(textReplace);
+	}
+  
+//  		В строке найти количество цифр. 
+
+	private static void task03(){
+		
+		System.out.println(text2);
+		
+		char[] numbers = {'1','2','3','4','5','6','7','8','9','0'};
+		int count = 0;
+		
+		for(int i = 0; i<text2.length(); i++) {
+			
+			for(char symb:numbers ) {
+				
+				if(text2.charAt(i) == symb) {
+					count++;
+				}
+			}
+		}
+		System.out.println("Количество цифр в тексте: " + count);
+	}
+	
+//   В строке найти количество чисел. 
+
+	private static void task04() {
+		
+		System.out.println(text2);
+		System.out.println("Количество чисел в тексте: " + counterNumbers(text2));
+	}
+	
+	private static int counterNumbers (String txt) {
+		
+		int count = 0;
+		
+	    for (int i = 0; i < txt.length(); i++) {
+	    	
+	        if (isNumb(txt.charAt(i))) {
+	        	
+	            if (i == txt.length() - 1 || !isNumb(txt.charAt(i + 1))) {
+	                    count++;
+	            }
+	        }
+	    }
+	    return count;
+	}
+
+	private static boolean isNumb (char ch) {
+		 
+	    boolean isDigit = false;
+	    char [] numbers = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+	    
+	    for (char symbs : numbers) {
+	    	
+	        if (ch == symbs) {
+	                isDigit = true;
+	        }
+	    }
+	    return isDigit;
+	}
+	 
+/*   Удалить в строке все лишние пробелы,
+   то есть серии подряд идущих пробелов заменить на одиночные пробелы.
+*/   Крайние пробелы в строке удалить. 
+ 
+	private static void task05() {
+		
+		System.out.println("Before:" + text2);
+		System.out.println("After :" + text2.replace("  ", " ").trim());
+		
+	}
+}
